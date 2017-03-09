@@ -1,0 +1,18 @@
+NAME = NWDEBUG
+OBJS = $(NAME).obj
+DEF  = $(NAME).def
+
+!if $d(MAKEDIR)
+IMPORT=$(MAKEDIR)\..\lib\import32
+!else
+IMPORT=import32
+!endif
+
+
+$(NAME).exe: $(OBJS) $(DEF)
+  tlink32 /Tpe /aa /c /V4.0 /x $(OBJS) MMFILES.obj, $(NAME),, $(IMPORT), $(DEF), $(NAME)
+
+.asm.obj:
+   tasm32 /ml /i$(MAKEDIR)\..\include\ $&.asm
+   tasm32 /ml /q /i$(MAKEDIR)\..\include\ MMFiles.asm
+   brc32 -r $(NAME).rc
