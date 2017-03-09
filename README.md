@@ -2,6 +2,8 @@
 
 NW-Debug is an oldschool debugger, wrote by Net Walker (lnwalker@hotmail.com), I'm just publishing the sources to keep this excellent code alive.
 
+NW-Debug, is a windows debugger (W95 and W98), written in asm.
+
 ## History
 
 * 30/04/98 
