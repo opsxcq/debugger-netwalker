@@ -1,0 +1,17 @@
+NAME = HELLO
+OBJS = $(NAME).obj
+DEF  = $(NAME).def
+
+!if $d(MAKEDIR)
+IMPORT=$(MAKEDIR)\..\lib\import32
+!else
+IMPORT=import32
+!endif
+
+
+$(NAME).EXE: $(OBJS) $(DEF)
+  tlink32 /Tpe /aa /c /V4.0 $(OBJS),$(NAME),, $(IMPORT), $(DEF)
+
+.asm.obj:
+   tasm32 $(TASMDEBUG) /ml /i$(MAKEDIR)\..\include $&.asm
+ 
